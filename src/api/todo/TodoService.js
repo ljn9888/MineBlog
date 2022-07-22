@@ -1,5 +1,5 @@
 import axios from "axios"
-import {API_URL} from "../../Constant"
+import {API_URL, JPA_API_URL} from "../../Constant"
 
 class TodoService {
     
@@ -8,7 +8,8 @@ class TodoService {
         let password = 'dummy'
         let basicAuthHeader = 'Basic ' + window.btoa(username + ":" + password)
         console.log(basicAuthHeader)
-        return axios.get('http://localhost:8080/users/123456/todos')
+        // return axios.get(`${JPA_API_URL}/users/123456/todos`)
+        return axios.get(`http://localhost:8080/users/123456/todos`)
     }
 
     deleteTodo(name, id) {
@@ -21,6 +22,7 @@ class TodoService {
         let username = '123456'
         let password = 'dummy'
         let basicAuthHeader = 'Basic ' + window.btoa(username + ":" + password)
+        // return axios.get(`http://localhost:8080/${JPA_API_URL}/users/${name}/todos/${id}`)
         return axios.get(`http://localhost:8080/users/${name}/todos/${id}`)
     }
     updateTodo(name, id, todo) {
